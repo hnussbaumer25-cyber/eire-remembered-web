@@ -188,20 +188,20 @@ def home():
     
     # Get active polls
     polls = db.execute(
-        '''SELECT id, title, question, created_at 
-           FROM polls 
-           WHERE status = 'active'
-           ORDER BY created_at DESC 
-           LIMIT 3'''
+    '''SELECT id, title, question, created_at
+       FROM polls 
+       WHERE is_active = 1
+       ORDER BY created_at DESC
+       LIMIT 3'''
     ).fetchall()
     
     # Get active quizzes
     quizzes = db.execute(
-        '''SELECT id, title, description, created_at 
-           FROM quizzes 
-           WHERE status = 'active'
-           ORDER BY created_at DESC 
-           LIMIT 3'''
+    '''SELECT id, title, description, created_at
+       FROM quizzes 
+       WHERE status = 'active'
+       ORDER BY created_at DESC
+       LIMIT 3'''
     ).fetchall()
     
     db.close()
