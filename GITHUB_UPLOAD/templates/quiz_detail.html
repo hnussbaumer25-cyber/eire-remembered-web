@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}{{ quiz.title }} - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="quiz-detail">
+        <div class="quiz-header">
+            <h1>{{ quiz.title }}</h1>
+            <p class="quiz-description-large">{{ quiz.description }}</p>
+        </div>
+        
+        <form method="POST" class="quiz-form">
+            {% for question in questions %}
+            <div class="quiz-question">
+                <h3 class="question-number">Question {{ loop.index }} of {{ questions|length }}</h3>
+                <p class="question-text">{{ question.question }}</p>
+                
+                <div class="question-options">
+                    <label class="question-option">
+                        <input type="radio" name="question_{{ question.id }}" value="A" required>
+                        <span>A. {{ question.option_a }}</span>
+                    </label>
+                    <label class="question-option">
+                        <input type="radio" name="question_{{ question.id }}" value="B" required>
+                        <span>B. {{ question.option_b }}</span>
+                    </label>
+                    <label class="question-option">
+                        <input type="radio" name="question_{{ question.id }}" value="C" required>
+                        <span>C. {{ question.option_c }}</span>
+                    </label>
+                    <label class="question-option">
+                        <input type="radio" name="question_{{ question.id }}" value="D" required>
+                        <span>D. {{ question.option_d }}</span>
+                    </label>
+                </div>
+            </div>
+            {% endfor %}
+            
+            <button type="submit" class="btn btn-large btn-primary">Submit Quiz</button>
+        </form>
+        
+        <div class="quiz-footer">
+            <a href="{{ url_for('quizzes') }}" class="btn btn-secondary">← Back to Quizzes</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

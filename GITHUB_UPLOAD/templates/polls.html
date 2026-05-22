@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Polls - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h1>📊 Community Polls</h1>
+        <p>Have your say on topics that matter to our community</p>
+    </div>
+    
+    {% if polls %}
+        <div class="polls-list">
+            {% for poll in polls %}
+            <div class="poll-card">
+                <h2 class="poll-title">{{ poll.title }}</h2>
+                <p class="poll-question">{{ poll.question }}</p>
+                {% if poll.description %}
+                    <p class="poll-description">{{ poll.description }}</p>
+                {% endif %}
+                <div class="poll-meta">
+                    <span>📅 Created {{ poll.created_at[:10] }}</span>
+                </div>
+                <a href="{{ url_for('poll_detail', poll_id=poll.id) }}" class="btn btn-primary">View & Vote</a>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="empty-state">
+            <p>No active polls at the moment. Check back soon!</p>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

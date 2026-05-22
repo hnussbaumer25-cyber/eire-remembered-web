@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Server Error - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="error-page">
+        <h1 class="error-code">500</h1>
+        <h2 class="error-message">Server Error</h2>
+        <p class="error-description">
+            Oops! Something went wrong on our end. Please try again later.
+        </p>
+        <div class="error-actions">
+            <a href="{{ url_for('home') }}" class="btn btn-large btn-primary">Go Home</a>
+        </div>
+    </div>
+</div>
+
+<style>
+.error-page {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.error-code {
+    font-size: 120px;
+    color: #c0392b;
+    margin-bottom: 20px;
+}
+
+.error-message {
+    font-size: 42px;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.error-description {
+    font-size: 24px;
+    color: #7f8c8d;
+    margin-bottom: 50px;
+}
+
+.error-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+</style>
+{% endblock %}

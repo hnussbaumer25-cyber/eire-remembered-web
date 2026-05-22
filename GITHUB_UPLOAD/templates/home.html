@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="hero">
+    <div class="container">
+        <h1>☘️ Welcome to Éire Remembered</h1>
+        <p class="hero-subtitle">A Digital Community for Traditional Irish Values</p>
+        <p class="hero-description">
+            Sharing stories, preserving heritage, and connecting generations of Irish people worldwide.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Latest Articles Section -->
+    <section class="section">
+        <h2 class="section-title">📰 Latest Articles</h2>
+        {% if articles %}
+            <div class="card-grid">
+                {% for article in articles %}
+                <div class="card">
+                    <div class="card-category">{{ article.category }}</div>
+                    <h3 class="card-title">
+                        <a href="{{ url_for('article_detail', article_id=article.id) }}">
+                            {{ article.title }}
+                        </a>
+                    </h3>
+                    <div class="card-meta">
+                        <span>By {{ article.author }}</span>
+                        <span>{{ article.created_at[:10] }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section-footer">
+                <a href="{{ url_for('articles') }}" class="btn btn-primary">View All Articles →</a>
+            </div>
+        {% else %}
+            <p class="empty-message">No articles yet. Check back soon!</p>
+        {% endif %}
+    </section>
+
+    <!-- Active Polls Section -->
+    <section class="section">
+        <h2 class="section-title">📊 Active Polls</h2>
+        {% if polls %}
+            <div class="card-grid">
+                {% for poll in polls %}
+                <div class="card">
+                    <h3 class="card-title">
+                        <a href="{{ url_for('poll_detail', poll_id=poll.id) }}">
+                            {{ poll.title }}
+                        </a>
+                    </h3>
+                    <p class="card-text">{{ poll.question }}</p>
+                    <div class="card-meta">
+                        <span>Created {{ poll.created_at[:10] }}</span>
+                    </div>
+                    <a href="{{ url_for('poll_detail', poll_id=poll.id) }}" class="btn btn-secondary">Vote Now</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section-footer">
+                <a href="{{ url_for('polls') }}" class="btn btn-primary">View All Polls →</a>
+            </div>
+        {% else %}
+            <p class="empty-message">No active polls at the moment.</p>
+        {% endif %}
+    </section>
+
+    <!-- Active Quizzes Section -->
+    <section class="section">
+        <h2 class="section-title">🎯 Featured Quizzes</h2>
+        {% if quizzes %}
+            <div class="card-grid">
+                {% for quiz in quizzes %}
+                <div class="card">
+                    <h3 class="card-title">
+                        <a href="{{ url_for('quiz_detail', quiz_id=quiz.id) }}">
+                            {{ quiz.title }}
+                        </a>
+                    </h3>
+                    <p class="card-text">{{ quiz.description }}</p>
+                    <div class="card-meta">
+                        <span>Created {{ quiz.created_at[:10] }}</span>
+                    </div>
+                    <a href="{{ url_for('quiz_detail', quiz_id=quiz.id) }}" class="btn btn-secondary">Take Quiz</a>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="section-footer">
+                <a href="{{ url_for('quizzes') }}" class="btn btn-primary">View All Quizzes →</a>
+            </div>
+        {% else %}
+            <p class="empty-message">No quizzes available right now.</p>
+        {% endif %}
+    </section>
+
+    <!-- Music Section -->
+    <section class="section music-promo">
+        <h2 class="section-title">🎵 Live Irish Music Stream</h2>
+        <p>Listen to traditional Irish music 24/7, streaming directly to your browser!</p>
+        <a href="{{ url_for('music') }}" class="btn btn-large btn-primary">🌐 Listen Now</a>
+    </section>
+</div>
+{% endblock %}
