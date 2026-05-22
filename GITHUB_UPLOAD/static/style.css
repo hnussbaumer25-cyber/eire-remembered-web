@@ -1,0 +1,837 @@
+/* ============================================================================
+   ÉIRE REMEMBERED - WEB STYLES
+   Matching Desktop Application Design
+   For elderly users (50-90 years) with large fonts and clear contrast
+   ============================================================================ */
+
+/* ============================================================================
+   ROOT VARIABLES - Irish Theme Colors
+   ============================================================================ */
+:root {
+    /* Primary Colors */
+    --primary-green: #2C5F2D;      /* Irish green */
+    --secondary-orange: #FF883E;   /* Warm orange */
+    --accent-gold: #FFD700;        /* Gold */
+    --cream-bg: #F5F5DC;           /* Beige/cream background */
+    
+    /* Text Colors */
+    --text-dark: #2C2C2C;          /* Dark gray */
+    --text-light: #FFFFFF;         /* White */
+    
+    /* UI Colors */
+    --card-bg: #FFFFFF;            /* White cards */
+    --border-gold: #D4AF37;        /* Gold border */
+    --hover-green: #3D7F3E;        /* Darker green hover */
+    --shadow: #CCCCCC;             /* Light gray shadow */
+    
+    /* Status Colors */
+    --success: #228B22;            /* Forest green */
+    --error: #DC143C;              /* Crimson */
+    --warning: #FF8C00;            /* Dark orange */
+    --info: #4682B4;               /* Steel blue */
+}
+
+/* ============================================================================
+   BASE STYLES
+   ============================================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Times New Roman', serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-dark);
+    background-color: var(--cream-bg);
+    min-height: 100vh;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: Georgia, serif;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-size: 32px;
+    text-align: center;
+    padding: 1.5rem 0;
+    border-bottom: 3px solid var(--border-gold);
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 20px;
+}
+
+a {
+    color: var(--primary-green);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--hover-green);
+    text-decoration: underline;
+}
+
+/* ============================================================================
+   NAVIGATION BAR
+   ============================================================================ */
+nav {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--hover-green) 100%);
+    padding: 0;
+    box-shadow: 0 4px 8px var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+nav .logo {
+    font-family: Georgia, serif;
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--text-light);
+    padding: 1rem 0;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+nav .logo:hover {
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: 0;
+}
+
+nav a:not(.logo) {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--text-light);
+    padding: 1.2rem 1.5rem;
+    display: block;
+    transition: all 0.3s ease;
+    border-bottom: 3px solid transparent;
+}
+
+nav a:not(.logo):hover {
+    background-color: var(--hover-green);
+    border-bottom-color: var(--accent-gold);
+    color: var(--accent-gold);
+    text-decoration: none;
+}
+
+/* ============================================================================
+   MAIN CONTAINER
+   ============================================================================ */
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* ============================================================================
+   FLASH MESSAGES
+   ============================================================================ */
+.flash-messages {
+    max-width: 1400px;
+    margin: 1rem auto;
+    padding: 0 2rem;
+}
+
+.alert {
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    border: 3px solid;
+    box-shadow: 0 2px 6px var(--shadow);
+}
+
+.alert-success {
+    background-color: #d4edda;
+    color: var(--success);
+    border-color: var(--success);
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    color: var(--error);
+    border-color: var(--error);
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    color: #856404;
+    border-color: var(--warning);
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    color: var(--info);
+    border-color: var(--info);
+}
+
+/* ============================================================================
+   CARDS
+   ============================================================================ */
+.card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px var(--shadow);
+    border-color: var(--primary-green);
+}
+
+.card-title {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin-bottom: 0.8rem;
+    border-bottom: 2px solid var(--border-gold);
+    padding-bottom: 0.5rem;
+}
+
+.card-meta {
+    font-size: 15px;
+    color: #666;
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.card-content {
+    font-size: 16px;
+    line-height: 1.8;
+    color: var(--text-dark);
+}
+
+.card-footer {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 2px solid var(--cream-bg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ============================================================================
+   BUTTONS
+   ============================================================================ */
+.btn {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: 0 3px 6px var(--shadow);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px var(--shadow);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--hover-green) 100%);
+    color: var(--text-light);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--hover-green) 0%, var(--primary-green) 100%);
+    color: var(--text-light);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-orange);
+    color: var(--text-light);
+}
+
+.btn-secondary:hover {
+    background-color: #ff7722;
+    color: var(--text-light);
+}
+
+.btn-success {
+    background-color: var(--success);
+    color: var(--text-light);
+}
+
+.btn-success:hover {
+    background-color: #1e7a1e;
+    color: var(--text-light);
+}
+
+.btn-danger {
+    background-color: var(--error);
+    color: var(--text-light);
+}
+
+.btn-danger:hover {
+    background-color: #c11131;
+    color: var(--text-light);
+}
+
+.btn-gold {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #FFC107 100%);
+    color: var(--text-dark);
+    font-weight: bold;
+}
+
+.btn-gold:hover {
+    background: linear-gradient(135deg, #FFC107 0%, var(--accent-gold) 100%);
+    color: var(--text-dark);
+}
+
+/* ============================================================================
+   FORMS
+   ============================================================================ */
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--text-dark);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    font-family: 'Times New Roman', serif;
+    font-size: 18px;
+    padding: 1rem;
+    width: 100%;
+    border: 3px solid var(--border-gold);
+    border-radius: 8px;
+    background-color: var(--card-bg);
+    color: var(--text-dark);
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 3px rgba(44, 95, 45, 0.1);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+    line-height: 1.6;
+}
+
+/* ============================================================================
+   GRID LAYOUTS
+   ============================================================================ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+}
+
+/* ============================================================================
+   HOMEPAGE SECTIONS
+   ============================================================================ */
+.welcome-section {
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--cream-bg) 100%);
+    border: 4px solid var(--border-gold);
+    border-radius: 15px;
+    padding: 3rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    box-shadow: 0 6px 15px var(--shadow);
+}
+
+.welcome-section h1 {
+    font-size: 38px;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px var(--shadow);
+    border: none;
+}
+
+.welcome-section p {
+    font-size: 20px;
+    color: var(--text-dark);
+    max-width: 800px;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
+}
+
+.section-header {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--hover-green) 100%);
+    color: var(--text-light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 3rem 0 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.section-header h2 {
+    color: var(--text-light);
+    margin: 0;
+    font-size: 28px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+/* ============================================================================
+   CATEGORY FILTERS
+   ============================================================================ */
+.category-filters {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 10px;
+    box-shadow: 0 3px 8px var(--shadow);
+}
+
+.category-filters .btn {
+    font-size: 16px;
+    padding: 0.8rem 1.5rem;
+}
+
+/* ============================================================================
+   ARTICLE/POLL/QUIZ DETAIL PAGES
+   ============================================================================ */
+.detail-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.detail-header {
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--cream-bg) 100%);
+    border: 4px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.detail-title {
+    font-size: 34px;
+    color: var(--primary-green);
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--border-gold);
+    padding-bottom: 1rem;
+}
+
+.detail-meta {
+    font-size: 17px;
+    color: #666;
+    font-style: italic;
+}
+
+.detail-content {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 2.5rem;
+    font-size: 18px;
+    line-height: 1.9;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+/* ============================================================================
+   QUIZ STYLES
+   ============================================================================ */
+.question-card {
+    background-color: var(--card-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 3px 8px var(--shadow);
+}
+
+.question-text {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin-bottom: 1.5rem;
+}
+
+.quiz-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.quiz-option {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--cream-bg);
+    border: 2px solid var(--border-gold);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.quiz-option:hover {
+    background-color: #fffacd;
+    border-color: var(--primary-green);
+    transform: translateX(5px);
+}
+
+.quiz-option input[type="radio"] {
+    width: 24px;
+    height: 24px;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.quiz-option label {
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ============================================================================
+   POLL STYLES
+   ============================================================================ */
+.poll-option {
+    margin-bottom: 1.5rem;
+}
+
+.poll-option-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 18px;
+}
+
+.poll-option-text {
+    font-weight: bold;
+    color: var(--text-dark);
+}
+
+.poll-option-votes {
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+.poll-progress-bar {
+    width: 100%;
+    height: 35px;
+    background-color: var(--cream-bg);
+    border: 2px solid var(--border-gold);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.poll-progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--hover-green) 100%);
+    transition: width 0.5s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.poll-vote-form {
+    background-color: var(--cream-bg);
+    border: 3px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+/* ============================================================================
+   MUSIC PAGE
+   ============================================================================ */
+.music-player {
+    background-color: var(--card-bg);
+    border: 4px solid var(--border-gold);
+    border-radius: 15px;
+    padding: 3rem;
+    text-align: center;
+    box-shadow: 0 6px 15px var(--shadow);
+}
+
+.music-player iframe {
+    border: 3px solid var(--border-gold);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+/* ============================================================================
+   LOGIN/REGISTER FORMS
+   ============================================================================ */
+.auth-container {
+    max-width: 500px;
+    margin: 3rem auto;
+    background-color: var(--card-bg);
+    border: 4px solid var(--border-gold);
+    border-radius: 15px;
+    padding: 3rem;
+    box-shadow: 0 6px 15px var(--shadow);
+}
+
+.auth-container h1 {
+    color: var(--primary-green);
+    text-align: center;
+    margin-bottom: 2rem;
+    border: none;
+}
+
+.auth-container .btn {
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.auth-links {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--cream-bg);
+}
+
+.auth-links a {
+    font-size: 18px;
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+/* ============================================================================
+   PROFILE PAGE
+   ============================================================================ */
+.profile-card {
+    background: linear-gradient(135deg, var(--card-bg) 0%, var(--cream-bg) 100%);
+    border: 4px solid var(--border-gold);
+    border-radius: 15px;
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 6px 15px var(--shadow);
+}
+
+.profile-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.profile-item {
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-gold);
+    border-radius: 8px;
+}
+
+.profile-label {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+.profile-value {
+    font-size: 20px;
+    color: var(--primary-green);
+    font-weight: bold;
+}
+
+.credits-display {
+    background: linear-gradient(135deg, var(--accent-gold) 0%, #FFC107 100%);
+    border: 4px solid var(--border-gold);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 10px var(--shadow);
+}
+
+.credits-amount {
+    font-size: 48px;
+    font-weight: bold;
+    color: var(--text-dark);
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+}
+
+/* ============================================================================
+   FOOTER
+   ============================================================================ */
+footer {
+    background: linear-gradient(135deg, var(--primary-green) 0%, var(--hover-green) 100%);
+    color: var(--text-light);
+    text-align: center;
+    padding: 2rem;
+    margin-top: 4rem;
+    box-shadow: 0 -4px 8px var(--shadow);
+}
+
+footer p {
+    font-size: 16px;
+    margin: 0.5rem 0;
+}
+
+footer a {
+    color: var(--accent-gold);
+    font-weight: bold;
+}
+
+footer a:hover {
+    color: var(--text-light);
+}
+
+/* ============================================================================
+   RESPONSIVE DESIGN
+   ============================================================================ */
+@media (max-width: 768px) {
+    body {
+        font-size: 18px;
+    }
+    
+    h1 {
+        font-size: 28px;
+    }
+    
+    h2 {
+        font-size: 22px;
+    }
+    
+    nav .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    nav a:not(.logo) {
+        text-align: center;
+        padding: 1rem;
+    }
+    
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-info {
+        grid-template-columns: 1fr;
+    }
+    
+    .category-filters {
+        justify-content: center;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+}
+
+/* ============================================================================
+   ACCESSIBILITY
+   ============================================================================ */
+:focus {
+    outline: 3px solid var(--accent-gold);
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ============================================================================
+   PRINT STYLES
+   ============================================================================ */
+@media print {
+    nav, footer, .btn {
+        display: none;
+    }
+    
+    body {
+        background-color: white;
+    }
+    
+    .card {
+        border: 2px solid black;
+        box-shadow: none;
+    }
+}
