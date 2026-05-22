@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+
+{% block title %}Profile - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="profile-container">
+        <div class="profile-card">
+            <h1>👤 My Profile</h1>
+            
+            <div class="profile-info">
+                <div class="profile-field">
+                    <label>Username</label>
+                    <p>{{ user.username }}</p>
+                </div>
+                
+                <div class="profile-field">
+                    <label>Email</label>
+                    <p>{{ user.email }}</p>
+                </div>
+                
+                <div class="profile-field">
+                    <label>Role</label>
+                    <p class="role-badge">{{ user.role|upper }}</p>
+                </div>
+                
+                <div class="profile-field">
+                    <label>Member Since</label>
+                    <p>{{ user.created_at[:10] }}</p>
+                </div>
+            </div>
+            
+            {% if credits %}
+            <div class="credits-section">
+                <h2>💳 Your Credits</h2>
+                <div class="credits-grid">
+                    <div class="credit-item">
+                        <span class="credit-label">Article Credits</span>
+                        <span class="credit-value">{{ credits.article_credits }}</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-label">Poll Credits</span>
+                        <span class="credit-value">{{ credits.poll_credits }}</span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-label">Quiz Credits</span>
+                        <span class="credit-value">{{ credits.quiz_credits }}</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if articles %}
+            <div class="profile-articles">
+                <h2>📝 Your Recent Articles</h2>
+                <div class="profile-article-list">
+                    {% for article in articles %}
+                    <div class="profile-article-item">
+                        <a href="{{ url_for('article_detail', article_id=article.id) }}">{{ article.title }}</a>
+                        <span class="article-status status-{{ article.status }}">{{ article.status }}</span>
+                        <span class="article-date">{{ article.created_at[:10] }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.profile-card h1 {
+    font-size: 42px;
+    color: #1a5f1a;
+    margin-bottom: 40px;
+}
+
+.profile-info {
+    margin-bottom: 40px;
+}
+
+.profile-field {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e0e0;
+}
+
+.profile-field label {
+    display: block;
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 8px;
+}
+
+.profile-field p {
+    font-size: 24px;
+    color: #2c3e50;
+    font-weight: bold;
+}
+
+.role-badge {
+    display: inline-block;
+    background: #1a5f1a;
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-size: 20px !important;
+}
+
+.credits-section {
+    margin-bottom: 40px;
+    padding: 30px;
+    background: #f8f9fa;
+    border-radius: 10px;
+}
+
+.credits-section h2 {
+    font-size: 32px;
+    color: #1a5f1a;
+    margin-bottom: 25px;
+}
+
+.credits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.credit-item {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.credit-label {
+    display: block;
+    font-size: 18px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.credit-value {
+    display: block;
+    font-size: 36px;
+    color: #1a5f1a;
+    font-weight: bold;
+}
+
+.profile-articles {
+    margin-bottom: 20px;
+}
+
+.profile-articles h2 {
+    font-size: 32px;
+    color: #1a5f1a;
+    margin-bottom: 25px;
+}
+
+.profile-article-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.profile-article-item {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.profile-article-item a {
+    flex: 1;
+    font-size: 22px;
+    color: #2c3e50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.profile-article-item a:hover {
+    color: #1a5f1a;
+}
+
+.article-status {
+    padding: 6px 15px;
+    border-radius: 15px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.status-published {
+    background: #27ae60;
+    color: white;
+}
+
+.status-draft {
+    background: #f39c12;
+    color: white;
+}
+
+.article-date {
+    font-size: 18px;
+    color: #7f8c8d;
+}
+</style>
+{% endblock %}

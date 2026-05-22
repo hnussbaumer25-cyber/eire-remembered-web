@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Éire Remembered - Irish Culture & Community Platform{% endblock %}</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="{% block description %}Éire Remembered - Connect with Irish culture through articles, music, polls, and quizzes. A social platform celebrating Ireland's heritage for all ages.{% endblock %}">
+    <meta name="keywords" content="Ireland, Irish culture, Irish music, Irish heritage, community platform, Eire, Irish articles, Irish polls, Irish quizzes">
+    <meta name="author" content="Éire Remembered">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ request.url }}">
+    <meta property="og:title" content="{% block og_title %}Éire Remembered - Irish Culture & Community{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Connect with Irish culture through articles, music, polls, and quizzes. Celebrating Ireland's heritage together.{% endblock %}">
+    <meta property="og:site_name" content="Éire Remembered">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.url }}">
+    <meta property="twitter:title" content="{% block twitter_title %}Éire Remembered - Irish Culture & Community{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Connect with Irish culture through articles, music, polls, and quizzes.{% endblock %}">
+    
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <a href="{{ url_for('home') }}">🍀 ÉIRE REMEMBERED</a>
+            </div>
+            <div class="nav-links">
+                <a href="{{ url_for('home') }}">Home</a>
+                <a href="{{ url_for('articles') }}">Articles</a>
+                <a href="{{ url_for('polls') }}">Polls</a>
+                <a href="{{ url_for('quizzes') }}">Quizzes</a>
+                <a href="{{ url_for('music') }}">Music</a>
+                
+                {% if session.user_id %}
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    {% if session.role == 'admin' %}
+                        <a href="{{ url_for('admin_dashboard') }}">Admin</a>
+                    {% endif %}
+                    <a href="{{ url_for('logout') }}" class="btn-logout">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('login') }}" class="btn-login">Login</a>
+                    <a href="{{ url_for('register') }}" class="btn-register">Register</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-container">
+                {% for category, message in messages %}
+                    <div class="flash flash-{{ category }}">
+                        {{ message }}
+                        <button class="flash-close" onclick="this.parentElement.remove()">&times;</button>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Éire Remembered - A Digital Community for Traditional Values</p>
+            <p>Preserving Irish Heritage • Connecting Generations</p>
+        </div>
+    </footer>
+</body>
+</html>

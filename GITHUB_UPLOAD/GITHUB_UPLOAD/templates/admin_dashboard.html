@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="admin-dashboard">
+        <h1>🛠️ Admin Dashboard</h1>
+        <p class="dashboard-subtitle">Manage Éire Remembered Platform</p>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">{{ stats.total_users }}</div>
+                <div class="stat-label">Total Users</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">📰</div>
+                <div class="stat-number">{{ stats.total_articles }}</div>
+                <div class="stat-label">Total Articles</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">📊</div>
+                <div class="stat-number">{{ stats.total_polls }}</div>
+                <div class="stat-label">Total Polls</div>
+            </div>
+            
+            <div class="stat-card">
+                <div class="stat-icon">🎯</div>
+                <div class="stat-number">{{ stats.total_quizzes }}</div>
+                <div class="stat-label">Total Quizzes</div>
+            </div>
+        </div>
+        
+        <div class="admin-note">
+            <h2>📝 Note</h2>
+            <p>To create and manage content (articles, polls, quizzes), please use the <strong>desktop application</strong>.</p>
+            <p>The web platform is designed for users to read and interact with published content.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+.admin-dashboard {
+    background: white;
+    padding: 50px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.admin-dashboard h1 {
+    font-size: 48px;
+    color: #1a5f1a;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.dashboard-subtitle {
+    font-size: 24px;
+    color: #555;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #1a5f1a 0%, #2d8f2d 100%);
+    color: white;
+    padding: 40px;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(26,95,26,0.3);
+    transition: transform 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+}
+
+.stat-icon {
+    font-size: 56px;
+    margin-bottom: 20px;
+}
+
+.stat-number {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.stat-label {
+    font-size: 20px;
+    opacity: 0.95;
+}
+
+.admin-note {
+    background: #f8f9fa;
+    padding: 35px;
+    border-radius: 12px;
+    border-left: 5px solid #1a5f1a;
+}
+
+.admin-note h2 {
+    font-size: 32px;
+    color: #1a5f1a;
+    margin-bottom: 20px;
+}
+
+.admin-note p {
+    font-size: 22px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.admin-note strong {
+    color: #1a5f1a;
+}
+</style>
+{% endblock %}

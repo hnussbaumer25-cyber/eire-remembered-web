@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Quiz Results - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="quiz-results-container">
+        <h1>🎯 Quiz Complete!</h1>
+        <h2 class="quiz-title-result">{{ quiz.title }}</h2>
+        
+        <div class="score-display">
+            <div class="score-circle">
+                <div class="score-number">{{ score }}/{{ total }}</div>
+                <div class="score-percentage">{{ percentage }}%</div>
+            </div>
+        </div>
+        
+        <div class="score-message">
+            {% if percentage >= 90 %}
+                <p class="message-excellent">🌟 Excellent! You're an expert!</p>
+            {% elif percentage >= 70 %}
+                <p class="message-good">👏 Great job! Well done!</p>
+            {% elif percentage >= 50 %}
+                <p class="message-ok">👍 Not bad! Keep learning!</p>
+            {% else %}
+                <p class="message-try">💪 Keep trying! You'll do better next time!</p>
+            {% endif %}
+        </div>
+        
+        {% if quiz.final_note %}
+            <div class="final-note">
+                <h3>Final Note</h3>
+                <p>{{ quiz.final_note }}</p>
+            </div>
+        {% endif %}
+        
+        <div class="results-actions">
+            <a href="{{ url_for('quizzes') }}" class="btn btn-primary">Take Another Quiz</a>
+            <a href="{{ url_for('home') }}" class="btn btn-secondary">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

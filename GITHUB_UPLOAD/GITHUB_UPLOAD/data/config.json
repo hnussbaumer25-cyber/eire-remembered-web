@@ -1,0 +1,11 @@
+{
+    "version": "1.0.0",
+    "theme": "classic",
+    "font_size": "medium",
+    "auto_save": true,
+    "show_notifications": true,
+    "last_user": null,
+    "window_width": 1400,
+    "window_height": 900,
+    "sidebar_width": 200
+}

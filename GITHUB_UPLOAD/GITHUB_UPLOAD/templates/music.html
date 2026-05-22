@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Irish Music Stream - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="music-page">
+        <div class="music-header">
+            <h1>🎵 Live Irish Music Stream</h1>
+            <p class="music-subtitle">Traditional Irish music playing 24/7</p>
+        </div>
+        
+        <div class="music-player-embed">
+            <iframe 
+                src="{{ stream_url }}" 
+                width="100%" 
+                height="600" 
+                frameborder="0"
+                title="Éire Remembered Music Stream"
+                allow="autoplay"
+            ></iframe>
+        </div>
+        
+        <div class="music-info">
+            <h2>🍀 About Our Music Stream</h2>
+            <p>Enjoy a continuous stream of traditional Irish music including:</p>
+            <ul class="music-list">
+                <li>🎻 The Field of Athenry</li>
+                <li>🎵 The Parting Glass</li>
+                <li>🎸 The Wild Rover</li>
+                <li>🎺 Drunken Sailor</li>
+                <li>🎶 Belle of Belfast City</li>
+                <li>🎻 Fairytale of New York</li>
+                <li>🎵 Ireland's Call</li>
+                <li>🎸 Mountains of Mourne</li>
+                <li>🎺 The Auld Triangle</li>
+                <li>🎶 And more!</li>
+            </ul>
+            <p class="music-note">Our stream plays 24/7, even when you're not here. Enjoy Irish music anytime, anywhere!</p>
+        </div>
+        
+        <div class="music-share">
+            <h3>Share This Stream</h3>
+            <p>Share this link with friends and family:</p>
+            <div class="share-link">
+                <input type="text" value="{{ stream_url }}" readonly id="streamUrl">
+                <button onclick="copyStreamUrl()" class="btn btn-secondary">Copy Link</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function copyStreamUrl() {
+    const input = document.getElementById('streamUrl');
+    input.select();
+    document.execCommand('copy');
+    alert('Stream URL copied to clipboard!');
+}
+</script>
+{% endblock %}

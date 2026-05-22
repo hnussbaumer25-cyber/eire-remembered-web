@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}{{ poll.title }} - Éire Remembered{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="poll-detail">
+        <div class="poll-header">
+            <h1>{{ poll.title }}</h1>
+            <h2 class="poll-question-large">{{ poll.question }}</h2>
+            {% if poll.description %}
+                <p class="poll-description-large">{{ poll.description }}</p>
+            {% endif %}
+        </div>
+        
+        {% if has_voted %}
+            <!-- Show Results -->
+            <div class="poll-results">
+                <p class="results-header">📊 Poll Results ({{ total_votes }} total votes)</p>
+                
+                {% for option in options %}
+                <div class="result-item">
+                    <div class="result-label">{{ option.text }}</div>
+                    <div class="result-bar-container">
+                        <div class="result-bar" style="width: {{ option.percent }}%"></div>
+                    </div>
+                    <div class="result-stats">
+                        <span>{{ option.votes }} votes ({{ option.percent }}%)</span>
+                    </div>
+                </div>
+                {% endfor %}
+                
+                <p class="vote-confirmation">✅ Thank you for voting!</p>
+            </div>
+        {% else %}
+            <!-- Show Voting Form -->
+            {% if session.user_id %}
+                <form method="POST" class="poll-form">
+                    <div class="poll-options">
+                        {% for option in options %}
+                        <label class="poll-option">
+                            <input type="radio" name="option_id" value="{{ option.id }}" required>
+                            <span class="option-text">{{ option.text }}</span>
+                        </label>
+                        {% endfor %}
+                    </div>
+                    
+                    <button type="submit" class="btn btn-large btn-primary">Submit Vote</button>
+                </form>
+            {% else %}
+                <div class="login-prompt">
+                    <p>Please <a href="{{ url_for('login') }}">login</a> to vote in this poll.</p>
+                </div>
+            {% endif %}
+        {% endif %}
+        
+        <div class="poll-footer">
+            <a href="{{ url_for('polls') }}" class="btn btn-secondary">← Back to Polls</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
