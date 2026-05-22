@@ -178,11 +178,12 @@ def home():
     
     # Get latest published articles (5 most recent)
     articles = db.execute(
-        '''SELECT id, title, author, category, created_at 
-           FROM articles 
-           WHERE status = 'published'
-           ORDER BY created_at DESC 
-           LIMIT 5'''
+    '''SELECT a.id, a.title, u.username as author, a.category, a.created_at
+       FROM articles a
+       JOIN users u ON a.author_id = u.id
+       WHERE a.status = 'published'
+       ORDER BY a.created_at DESC
+       LIMIT 5'''
     ).fetchall()
     
     # Get active polls
