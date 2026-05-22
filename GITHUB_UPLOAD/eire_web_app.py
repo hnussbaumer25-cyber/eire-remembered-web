@@ -199,7 +199,7 @@ def home():
     quizzes = db.execute(
     '''SELECT id, title, description, created_at
        FROM quizzes 
-       WHERE status = 'active'
+       WHERE is_active = 1
        ORDER BY created_at DESC
        LIMIT 3'''
     ).fetchall()
@@ -223,14 +223,14 @@ def articles():
         articles = db.execute(
             '''SELECT id, title, author, category, created_at 
                FROM articles 
-               WHERE status = 'published'
+               WHERE 1=1
                ORDER BY created_at DESC'''
         ).fetchall()
     else:
         articles = db.execute(
             '''SELECT id, title, author, category, created_at 
                FROM articles 
-               WHERE status = 'published' AND category = ?
+               WHERE 1=1 AND category = ?
                ORDER BY created_at DESC''',
             (category,)
         ).fetchall()
@@ -273,7 +273,7 @@ def polls():
     polls = db.execute(
         '''SELECT id, title, question, description, created_at 
            FROM polls 
-           WHERE status = 'active'
+           WHERE is_active = 1
            ORDER BY created_at DESC'''
     ).fetchall()
     
@@ -367,7 +367,7 @@ def quizzes():
     quizzes = db.execute(
         '''SELECT id, title, description, created_at 
            FROM quizzes 
-           WHERE status = 'active'
+           WHERE is_active = 1
            ORDER BY created_at DESC'''
     ).fetchall()
     
